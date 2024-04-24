@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Main extends JFrame {
-    
+public class Main {
+
     public static void descompunereLU(double[][] A) {
         int n = A.length;
         final double epsilon = 1e-6;
@@ -154,15 +154,16 @@ public class Main extends JFrame {
 
     public static void main(String[] args) {
 
-        int size = 100;
+        //int size = 100;
 //        double[][] A = createMatrix(size); //PENTRU TESTAREA CU DIMENSIUNI MARI
         double[][] A = {
-                {2.5, 2, 2},
-                {5, 6, 5},
-                {5, 6, 6.5}
+                {2, 0, 2},
+                {1, 2, 5},
+                {1, 1, 7}
         };
 //       double[] B = createRandomVector(size);
-        double[] B = {2, 2, 2};
+        double[] B = {4, 10, 10};
+
 
         // Ainit este copia matricii A initiale
         double[][] Ainit = new double[A.length][];
@@ -222,9 +223,9 @@ public class Main extends JFrame {
         // Facem inversa
         Matrix inverseA = A2.inverse();
 
-//        // Afisarea inversei matricei A2
-//        System.out.println("\nInversa matricei A2:");
-//        inverseA.print(10, 5);
+        // Afisarea inversei matricei A2
+        System.out.println("\nInversa matricei A2:");
+        inverseA.print(10, 5);
 
         // Facem norma2
         double[] rezInmultireLIB = inmultireMatrici(inverseA.getArray(),B); //un fel de castare de la Matrix la double[][]

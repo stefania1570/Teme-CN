@@ -24,7 +24,7 @@ public class Main {
             x[i] = x[0]+i*h;
         }
 
-        //calcul schema Aitken
+        //calcul schema Aitken -diferentele finite
         for (int i = 0; i <= n; i++){
             for(int j = n;j >= i+1;j--){
                 y[j]=y[j]-y[j-1];
@@ -46,7 +46,7 @@ public class Main {
             Ln += y[k]*s;
         }
 
-        System.out.println("ex1: Formula Newton + schema Aitken: L"+n+"("+xDeAproximat+") = "+ Ln);
+        System.out.println("\n ex1: Formula Newton + schema Aitken: L"+n+"("+xDeAproximat+") = "+ Ln);
         System.out.println("|Ln(x)-f(x)| = "+ Math.abs(Ln - 30.3125)); //???asa trebuie??
     }
     public static void citireFisier(String numeFisier,int exempluDorit,DateInput date){
@@ -81,15 +81,7 @@ public class Main {
         } catch (IOException e) {
             System.err.println("Eroare la citirea din fisier: " + e.getMessage());
         }
-//        System.out.println("n: " + date.n);
-//        System.out.println("x0: " + date.x0);
-//        System.out.println("xn: " + date.xn);
-//        System.out.println("xDeAproximat: " + date.xDeAproximat);
-//        System.out.print("vectorY: ");
-//        for (double yy : date.y) {
-//            System.out.print(yy + " ");
-//        }
-//        System.out.println();
+
     }
 
     public static double schemaHorner(double[] c, double x0) {
@@ -102,15 +94,15 @@ public class Main {
 
     public static void metodaCelorMaiMiciPatrate(int n, double x0, double xn, double[] y, double xDeAproximat){
 
-        System.out.println("ex2: Metoda celor mai mici patrate:");
+        System.out.println("\n ex2: Metoda celor mai mici patrate:");
 
         double h = (xn-x0)/n;
 
         // vectorul cu valorile x
         double[] x = new double[n+1];
         x[0] = x0;
-        x[n - 1] = xn;
-        for (int i = 1; i <= n-2; i++) {
+        x[n-1] = xn;
+        for (int i = 1; i <= n; i++) {
             x[i] = x[0]+i*h;
         }
 
@@ -121,12 +113,12 @@ public class Main {
         for (int i = 0; i < m; i++) {
             //B*a
             for (int j = 0; j < m; j++) {
-                for (int k = 0; k < n; k++) {
+                for (int k = 0; k <= n; k++) {
                     B[i][j] += Math.pow(x[k], i + j);
                 }
             }
             // f
-            for (int k = 0; k < n; k++) {
+            for (int k = 0; k <= n; k++) {
                 f[i] += y[k] * Math.pow(x[k], i);
             }
         }
@@ -141,14 +133,17 @@ public class Main {
 
         double result = schemaHorner(a.getColumnPackedCopy(), xDeAproximat);
         System.out.println("Rezultatul schemei Horner pentru polinomul dat este Pm(x) = : " + result);
+        String rezultatFormatare = String.format("%.5f", result);
+        result = Double.parseDouble(rezultatFormatare); //am limitat la 5 zecimale
         System.out.println("|Pm(x)-f(x)| = "+ Math.abs(result - 30.3125));
 
 
         double suma2 = 0;
         for(int i=0;i<x.length;i++){
             //aflu Pm(x)
-            double rez = schemaHorner(a.getColumnPackedCopy(), x[i]);
+            double rez = Math.round(schemaHorner(a.getColumnPackedCopy(), x[i]));
             //System.out.println("Pm(x"+i+") = " + rez);
+
 
             //aflu diferenta in modul dintre Pm si yi
             double dif = Math.abs(rez-y[i]);

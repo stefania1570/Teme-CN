@@ -84,7 +84,7 @@ public class Main {
                 .orElse(Integer.MIN_VALUE);
 
         double R = (Math.abs(a1[0])+A) / Math.abs(a1[0]);
-        System.out.println("ex1: Toate radacinile reale ale polinomului P se afla in intervalul["+(-R)+","+R+"] \nex2:");
+        System.out.println("\nex1: Toate radacinile reale ale polinomului P1 se afla in intervalul["+(-R)+","+R+"]");
 
         //ex 2: Metoda Muller de aprox a radacinilor
 
@@ -107,6 +107,39 @@ public class Main {
         x2 = 3.1;
 
         rezultate.add(metodaMuller(x0,x1,x2,a1));// pt radacina 3
+
+        double[] a2 = {42.0,-55.0,-42.0,49.0,-6.0};
+        A = Arrays.stream(a2, 1, a2.length)
+                .max()
+                .orElse(Integer.MIN_VALUE);
+
+        R = (Math.abs(a1[0])+A) / Math.abs(a1[0]);
+        System.out.println("\nex2:Toate radacinile reale ale polinomului P2 se afla in intervalul["+(-R)+","+R+"].");
+
+        x0 = 0.13;
+        x1 = 0.2345;
+        x2 = 1.1;
+
+        rezultate.add(metodaMuller(x0,x1,x2,a2));// pt radacina 2/3 = 0.6666
+
+        x0 = 0.8854;
+        x1 = 1.875;
+        x2 = 0.234;
+
+        rezultate.add(metodaMuller(x0,x1,x2,a2));// pt radacina 1/7=0.1428
+
+        x0 = -0.8854;
+        x1 = -1.875;
+        x2 = -1.234;
+
+        rezultate.add(metodaMuller(x0,x1,x2,a2));// pt radacina -1
+
+        x0 = 1.0987;
+        x1 = 0.98205;
+        x2 = 1.789;
+
+        rezultate.add(metodaMuller(x0,x1,x2,a2));// pt radacina 3/2=1.5
+
 
 
         try (PrintWriter writer = new PrintWriter(new FileWriter("rezultate.txt"))) {

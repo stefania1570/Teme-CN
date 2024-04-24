@@ -148,6 +148,7 @@ public class Main {
         return x;
     }
 
+
     private static double[] scadereVectori(double[] A,double[] B){ //pt aflarea normei
         double[] result = new double[B.length];
         for (int i = 0; i < B.length; i++) {
@@ -207,9 +208,9 @@ public class Main {
             }
 
             double[] x = substitutieInversa(R, b);
-//            for (int i = 0; i < n; i++) {
-//                System.out.println("x["+i+"]="+ x[i]);
-//            }
+            for (int i = 0; i < n; i++) {
+                //System.out.println("x["+i+"]="+ x[i]);
+            }
 
             // Punem solutia x in coloana j din inversa
             for (int i = 0; i < n; i++) {
@@ -301,19 +302,19 @@ public class Main {
         afisareMatrice(A);
         System.out.println("Matricea Qtr:");
         afisareMatrice(Q);
-        System.out.println("Matricea b dupa aplicarea descompunerii => adica devine Qtr*b");
-        afisareMatrice(b);
+        //System.out.println("Matricea b dupa aplicarea descompunerii => adica devine Qtr*b");
+        //afisareMatrice(b);
 
 
         double[] xMEU = substitutieInversa(A,b);
-        System.out.println("ex3: Solutie dupa aplicarea alg. lui HOUSEHOLDER, x = : *****************************");
+        System.out.println("ex3: Solutie dupa aplicarea alg. lui HOUSEHOLDER, x = : ");
         for (int i = 0; i < xMEU.length; i++) {
             System.out.println(xMEU[i]);
         }
 
         //Facem descompunerea QR si aflam solutia xQR folosind biblioteca JAMA
 
-        Matrix A2 = new Matrix(Ainit);
+        Matrix A2 = new Matrix(A);
         Matrix b2 = new Matrix(b);
 
         // Obtinem descompunerii QR
@@ -389,7 +390,8 @@ public class Main {
         double[][] inversa = calculateInverse(Q,A);
         afisareMatrice(inversa);
 
-        Matrix inversaBibl = A2.inverse();
+        Matrix A3 = new Matrix(Ainit);
+        Matrix inversaBibl = A3.inverse();
         System.out.println("\n    INVERSA BIBLIOTECA: ***************************");
         inversaBibl.print(5, 2);
 
@@ -397,7 +399,7 @@ public class Main {
         double euclideanNorm7 = normaMatricealaFrobenius(result6);
         System.out.printf("%nNorma euclidiana ex 5: ||inversaHouseholder - inversaBibl|| = %.25f%n", euclideanNorm7);
 
-        if (euclideanNorm7 < 1e-6){ //TODO
+        if (euclideanNorm7 < 1e-6){
             System.out.println("Norma euclidiana inverse este corecta deoarece norma euclidiana este mai mica decat 10 la puterea -6.");
         }
 
