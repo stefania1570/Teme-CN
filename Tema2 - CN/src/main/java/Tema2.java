@@ -1,10 +1,7 @@
 import Jama.Matrix;
 import java.util.Random;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
-public class Main {
+public class Tema2 {
 
     public static void descompunereLU(double[][] A) {
         int n = A.length;

@@ -1,7 +1,6 @@
-import java.sql.SQLOutput;
 import java.util.Arrays;
 
-public class Main {
+public class Tema5 {
     public static void metodaJacobi(double[][] A, int kmax) {
         int n = A.length;
         int k = 0;

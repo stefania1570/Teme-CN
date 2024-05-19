@@ -3,7 +3,7 @@ import Jama.QRDecomposition;
 
 import java.util.Random;
 
-public class Main {
+public class Tema3 {
 
     public static void afisareMatrice(double[][] b) {
         for (int i = 0; i < b.length; i++) {

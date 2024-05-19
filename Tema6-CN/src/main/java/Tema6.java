@@ -11,7 +11,7 @@ class DateInput {
     double[] y;
 }
 
-public class Main {
+public class Tema6 {
 
     public static void formulaNewtonSchemaAitken(int n, double x0, double xn, double[] y, double xDeAproximat){
         double h = (xn-x0)/n;

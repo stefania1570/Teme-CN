@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Main{
+public class Tema2BONUS {
 
 
     public static void descompunereLU(double[][] A, double[] L, double[] U) {

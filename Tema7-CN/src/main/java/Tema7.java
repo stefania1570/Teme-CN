@@ -9,7 +9,7 @@ import static java.lang.Double.NaN;
 import static java.lang.Math.max;
 import static java.lang.Math.pow;
 
-public class Main {
+public class Tema7 {
 
     public static Double metodaMuller(double x0,double x1,double x2, double[] coef) {
         double epsilon = 1e-25;
